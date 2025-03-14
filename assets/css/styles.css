@@ -1,5 +1,6 @@
-/* Base variables - will be overridden by resolution-specific presets */
+/* Base variables - adding text and heading sizes */
 :root {
+   
     --frame-width: 95%;
     --frame-max-width: 1920px;
     --frame-padding: 40px;
@@ -11,9 +12,16 @@
     --progress-height: 30px;
     --nav-gap: 60px;
     --section-margin: 50px;
+    --text-font-size: 1.2rem;
+    --h1-font-size: 3rem;
+    --h2-font-size: 2.2rem;
+    --h3-font-size: 1.8rem;
+    --text-line-height: 1.7;
+    --text-glow: 0 0 5px #7bf7c7;
+    --heading-glow: 0 0 8px #7bf7c7;
 }
 
-/* Resolution presets */
+/* Resolution presets - adding text and heading sizes to each */
 /* HD Resolution (1280x720 to 1920x1080) */
 @media screen and (min-width: 1280px) and (max-width: 1920px) {
     :root {
@@ -28,6 +36,10 @@
         --progress-height: 30px;
         --nav-gap: 60px;
         --section-margin: 50px;
+        --text-font-size: 1rem;
+        --h1-font-size: 3rem;
+        --h2-font-size: 2.2rem;
+        --h3-font-size: 1.8rem;
     }
 }
 
@@ -45,6 +57,10 @@
         --progress-height: 35px;
         --nav-gap: 80px;
         --section-margin: 60px;
+        --text-font-size: 1.4rem;
+        --h1-font-size: 3.5rem;
+        --h2-font-size: 2.6rem;
+        --h3-font-size: 2.1rem;
     }
 }
 
@@ -62,6 +78,10 @@
         --progress-height: 40px;
         --nav-gap: 100px;
         --section-margin: 80px;
+        --text-font-size: 1.6rem;
+        --h1-font-size: 4.2rem;
+        --h2-font-size: 3.2rem;
+        --h3-font-size: 2.4rem;
     }
 }
 
@@ -79,6 +99,10 @@
         --progress-height: 25px;
         --nav-gap: 40px;
         --section-margin: 40px;
+        --text-font-size: 1.1rem;
+        --h1-font-size: 2.6rem;
+        --h2-font-size: 2rem;
+        --h3-font-size: 1.6rem;
     }
 }
 
@@ -96,8 +120,13 @@
         --progress-height: 20px;
         --nav-gap: 20px;
         --section-margin: 30px;
+        --text-font-size: 1rem;
+        --h1-font-size: 2.2rem;
+        --h2-font-size: 1.7rem;
+        --h3-font-size: 1.4rem;
     }
 }
+
 
 /* Base Styles */
 *, *:before, *:after {
@@ -117,6 +146,58 @@ body {
     overflow: hidden;
 }
 
+/* Updated terminal-text style */
+.terminal-text {
+    color: #7bf7c7;
+    margin-bottom: var(--section-margin);
+    text-shadow: var(--text-glow);
+    line-height: var(--text-line-height);
+    font-size: var(--text-font-size);
+}
+
+/* Add styles for paragraphs inside terminal-text */
+.terminal-text p {
+    margin-bottom: 1.2em;
+}
+
+/* Heading styles */
+h1, h2, h3 {
+    color: #7bf7c7;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    letter-spacing: 0.05em;
+    text-shadow: var(--heading-glow);
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+/* Style for lists in terminal-text */
+.terminal-text ul, .terminal-text ol {
+    margin-left: 2em;
+    margin-bottom: 1.2em;
+}
+
+.terminal-text li {
+    margin-bottom: 0.7em;
+}
+
+.terminal-text strong {
+    color: #e5dd79;
+    text-shadow: 0 0 5px #e5dd79;
+}
+
 .crt-frame {
     border: 3px solid #7bf7c7;
     box-shadow: 0 0 15px #7bf7c7, inset 0 0 15px #7bf7c7;
@@ -127,14 +208,6 @@ body {
     box-sizing: border-box;
     height: 95vh;
     overflow: auto;
-}
-
-.terminal-text {
-    color: #7bf7c7;
-    margin-bottom: var(--section-margin);
-    text-shadow: 0 0 8px #7bf7c7;
-    line-height: 1.6;
-    font-size: var(--subtext-font-size);
 }
 
 .logo {
@@ -286,13 +359,34 @@ body {
     background: rgba(123, 247, 199, 0.2);
 }
 
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-top {
+    font-size: 1.5em; /* Adjust as needed */
+    font-weight: bold;
+    letter-spacing: 0.05em; /* Adjust letter spacing if needed */
+}
+
+.logo-bottom {
+    align-self: flex-start;
+    margin-left: calc(50% + 2ch); /* Center + offset to align L under c */
+    font-size: 1.5em; /* Adjust as needed */
+    font-weight: bold;
+}
+
 /* Mobile-specific adjustments */
 @media (max-width: 767px) {
     .nav-bar ul {
         flex-direction: column;
         align-items: center;
     }
-    }
+    
     
     .search-box {
         flex-direction: column;
